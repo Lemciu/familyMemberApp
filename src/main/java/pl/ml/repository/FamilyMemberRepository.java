@@ -1,6 +1,7 @@
-package pl.ml.model;
+package pl.ml.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import pl.ml.model.FamilyMember;
 
 import java.util.List;
 

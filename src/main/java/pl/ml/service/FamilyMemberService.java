@@ -1,7 +1,9 @@
-package pl.ml.model;
+package pl.ml.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import pl.ml.model.FamilyMember;
+import pl.ml.repository.FamilyMemberRepository;
 
 import java.util.List;
 
@@ -23,12 +25,12 @@ public class FamilyMemberService {
 
     public Long getFamilyId() {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://localhost:9091/getFamilyId", Long.class);
+        return restTemplate.getForObject("http://localhost:8054/getFamilyId", Long.class);
     }
 
     public FamilyMember getFamilyMember() {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://localhost:9091/getFamilyMember", FamilyMember.class);
+        return restTemplate.getForObject("http://localhost:8054/getFamilyMember", FamilyMember.class);
     }
 
 }

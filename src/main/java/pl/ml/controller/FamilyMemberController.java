@@ -1,9 +1,13 @@
-package pl.ml.model;
+package pl.ml.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.ml.model.FamilyMember;
+import pl.ml.service.FamilyMemberService;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 
 @Controller
@@ -14,21 +18,17 @@ public class FamilyMemberController {
         this.familyMemberService = familyMemberService;
     }
 
-    @GetMapping("/addFamilyMember")
-    public String createFamilyMember() {
+    @GetMapping("/createFamilyMember")
+    @ResponseBody
+    public String createFamilyMember(Model model) {
         FamilyMember familyMember = familyMemberService.getFamilyMember();
         familyMemberService.save(familyMember);
-        return "success";
-    }
-
-    @GetMapping("/getFamilyMembers")
-    @ResponseBody
-    public List<FamilyMember> sendMembers() {
-        Long familyId = familyMemberService.getFamilyId();
-        return familyMemberService.findAllByFamilyId(familyId);
+        model.addAttribute("familyMember", familyMember);
+        return "";
     }
 
     @GetMapping("/searchFamilyMember")
+    @ResponseBody
     public List<FamilyMember> searchFamilyMember() {
         Long familyId = familyMemberService.getFamilyId();
         return familyMemberService.findAllByFamilyId(familyId);
