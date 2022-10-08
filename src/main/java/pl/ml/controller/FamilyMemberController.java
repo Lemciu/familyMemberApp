@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.ml.model.FamilyMember;
 import pl.ml.service.FamilyMemberService;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @Controller
