@@ -14,6 +14,7 @@ public class FamilyMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String familyName;
     private String givenName;
     private Integer age;
